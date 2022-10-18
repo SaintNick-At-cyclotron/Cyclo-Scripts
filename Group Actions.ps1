@@ -1,13 +1,7 @@
 #variables
-
-#$users = Import-Csv .csv
-$groupmemberdir = "C:\Temp\"
-$admin = ""
 $rootFolder = 'C:\temp\CycloScript'
 
-#$roomactions = $false
-
-
+#reset counters
 $i = 0
 $ii = 0
 $errors = 0
