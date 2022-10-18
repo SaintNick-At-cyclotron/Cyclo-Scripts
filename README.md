@@ -14,3 +14,10 @@ Requiring Refactoring:
  - Upgrade d-list to M365 groups
  - Gather group info
  - Create Rooms
+
+
+TO-DO:
+ - Integrate GAM
+ - Seperate functions into installable modules
+ - Help files
+ - Convert ugly PS UI to WPF app
