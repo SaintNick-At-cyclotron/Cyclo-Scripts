@@ -6,6 +6,7 @@ Group Actions takes CSVs previously outputted from GAM and provisions those grou
  - Create M365 Groups
  - Delete or Purge M365 Groups
  - Update Memberships/Ownerships
+ - Create Rooms
 
 Contains Group type intelligence.
 Contains PS UI
@@ -13,7 +14,6 @@ Contains PS UI
 Requiring Refactoring:
  - Upgrade d-list to M365 groups
  - Gather group info
- - Create Rooms
 
 
 TO-DO:

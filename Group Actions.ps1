@@ -1,8 +1,8 @@
 #variables
 
-#$users = Import-Csv C:\Temp\alector-resources.csv
-$groupmemberdir = "C:\Temp\AlectorM365Groups\"
-$admin = "GCP-Migration-SVC@alector.onmicrosoft.com"
+#$users = Import-Csv .csv
+$groupmemberdir = "C:\Temp\"
+$admin = ""
 $rootFolder = 'C:\temp\CycloScript'
 
 #$roomactions = $false
@@ -279,26 +279,31 @@ function Update-Groups {
     }
 }
 
-
 function Update-Rooms {
-    if ($roomactions -eq $true)
+    Open-Explorer
+    foreach ($Room in $csv)
     {
         if ($User.category -eq "Room") 
         {
             New-Mailbox -Name $User.name -Room -PrimarySmtpAddress $User.email
             Set-Mailbox $User.name -ResourceCapacity $User.capacity -Office $User.building
         }
+
         if ($User.category -eq "Equipment")
         {
             New-Mailbox -Name $User.name -Equipment -PrimarySmtpAddress $User.email
         }
+
         Set-CalendarProcessing $User.name -AutomateProcessing AutoAccept
-        Add-DistributionGroupMember -Identity "$($User.building)@alector.com" -Member $User.email
+        Add-DistributionGroupMember -Identity "$($User.building)" -Member $User.email
         Set-Place -Identity $User.name -Building $User.building -Floor $User.floor -FloorLabel $User.section -Label $User.description -City "All Cities" -CountryOrRegion "US" -State "CA"
+
+        $i++
+        write-host "Total Progress: $i / $($csv.Count)" -ForegroundColor Green
     }
 }
 
-$functions = @('Convert-groups', 'Update-Groups')
+$functions = @('Convert-groups', 'Update-Groups', 'Update-Rooms')
 $functions | Out-GridView -PassThru  | Invoke-Expression 
 
 Write-Host "Errors: $errors" -ForegroundColor Red
