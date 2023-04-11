@@ -21,3 +21,7 @@ TO-DO:
  - Seperate functions into installable modules
  - Help files
  - Convert ugly PS UI to WPF app
+
+Also included is Group Migrations script.  This script can
+ - Migrate any type of AzureAD group from one tenant to another, including members and all group settings.
+ - Migrate any type of AD group to AzureAD, including members and all group settings.
